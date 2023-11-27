@@ -15,7 +15,7 @@ const NavigationBar = () => {
                     <Navbar.Brand href='/home' className='fs-4'>NBU Exchange Rate Viewer</Navbar.Brand>
                     <Nav className='me-auto'>
                         {/* <Nav.Link href = '/home'>Home</Nav.Link> */}
-                        <Nav.Link href = '/search-rate'>Find Currency Rate</Nav.Link>
+                        <Nav.Link href = '/search-rate'>Search Currency Rate</Nav.Link>
                         <Nav.Link href = '/custom-rate'>Alter Currency Rate</Nav.Link>
                     </Nav>
                 </Container>
