@@ -23,7 +23,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/home" element={<Home rate={actualCurrenyRate}/>} />
+          <Route path="/home" element={<Home rates={actualCurrenyRate}/>} />
           <Route path="/search-rate" element={<SearchRate />} />
           <Route path="/custom-rate" element={<CustomRate />} />
           <Route path="*" element={<NoPage />} />
