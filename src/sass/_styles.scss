@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;800&display=swap');
+
+$sora-sans: 'Sora', sans-serif;
+
+$primary_color__1: #93e4c1;
+$primary_color__2: #3baea0;
+$primary_color__3: #118a7e;
+$primary_color__4: #1f6f78;
+
+.nav-bar-overlap-prevention {
+    padding-top: 5rem;
+}
+
+.currencies-list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-self: start;
+    padding-left: 0.5rem;
+
+    list-style-type: none;
+}
+
+.currency-rate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    min-width: 25rem;
+    background: $primary_color__1;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0;
+    margin: 0.5rem;
+}
+
+.currency-rate__name {
+    font-family: $sora-sans;
+    font-weight: 800;
+    text-align: center;
+}

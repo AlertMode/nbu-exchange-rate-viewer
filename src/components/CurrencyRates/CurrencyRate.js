@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from 'prop-types'
+import '../../sass/_styles.scss'
 
 const CurrencyRate = (props) => {
     return (
         <li>
-            <div>
-                {console.log('ff')}
-                <h2>{props.name}</h2>
+            <div className = "currency-rate">
+                <div className = "currency-rate__name">{props.name}</div>
                 <div>{props.rate}</div>
                 <div>{props.cc}</div>
                 <div>{props.exchangeDate}</div>

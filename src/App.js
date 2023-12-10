@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import SearchRate from './pages/SearchRate'
 import CustomRate from './pages/CustomRate'
 import NoPage from './pages/NoPage'
+import './sass/_styles.scss'
 
 const App = () => {
   const [actualCurrenyRate, setActualCurrencyRate] = useState('')
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <div>
       <NavigationBar />
+      <div className = 'nav-bar-overlap-prevention'>
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
@@ -29,6 +31,7 @@ const App = () => {
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
+      </div>
     </div>
   )
 }
