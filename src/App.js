@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import NavigationBar from './components/NavigationBar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { fetchDataFromJSON } from './components/modules/fetchDataFromJSON.js'
+// import { cloneArray } from './components/modules/cloneArray.js'
+import Home from './pages/Home'
+import SearchRate from './pages/SearchRate'
+import CustomRate from './pages/CustomRate'
+import NoPage from './pages/NoPage'
+import './sass/_styles.scss'
 
-function App() {
+const App = () => {
+  const [actualCurrenyRate, setActualCurrencyRate] = useState('')
+
+  useEffect( () => {
+    fetchDataFromJSON('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json').then(data => {
+      setActualCurrencyRate(data)
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavigationBar />
+      <div className = 'nav-bar-overlap-prevention'>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home rates={actualCurrenyRate}/>} />
+          <Route path="/search-rate" element={<SearchRate />} />
+          <Route path="/custom-rate" element={<CustomRate />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </BrowserRouter>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
