@@ -1,13 +1,14 @@
 import React from 'react'
 import CurrencyRate from './CurrencyRate'
 import PropTypes from 'prop-types'
+import '../../sass/_styles.scss'
 
 const CurrencyRates = (props) => {
 
     if (props.rates.length === 0) return <h2>No data fetched!</h2>
 
     return (
-        <ul>
+        <ul className='currencies-list'>
             {
                 props.rates.map((rate) => (
                     <CurrencyRate 
