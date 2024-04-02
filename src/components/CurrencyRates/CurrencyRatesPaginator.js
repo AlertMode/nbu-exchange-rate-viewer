@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import Pagination from 'react-bootstrap/Pagination'
-import CurrencyRate from './CurrencyRates/CurrencyRate'
-import '../sass/_styles.scss'
+import CurrencyRate from './CurrencyRate'
+import '../../sass/_styles.scss'
 
 const Paginator = (props) => {
     
-    const itemsPerPage = 6
+    const itemsPerPage = 10
 
     const totalPages = Math.ceil(props.items.length / itemsPerPage)
 
@@ -36,7 +36,6 @@ const Paginator = (props) => {
             setCurrentPage(currentPage + 1)
         }
     }
-
     
     const pageNumbers = []
     for (let i = 1; i <= totalPages; i++) {
@@ -44,20 +43,22 @@ const Paginator = (props) => {
     }
 
     return (
-        <div>
-            <ul className='currencies-list'>
+        <div className="pagination-container">
+            <div className='currencies-list'>
                 {
-                    currentItems.map((item) => (
+                    currentItems.map((item, index) => (
+                    <Fragment key = {index}>
                         <CurrencyRate 
-                            key = {item.r030} 
+                            r030 = {item.r030} 
                             name = {item.txt}
                             item = {item.item}
                             cc = {item.cc}
                             exchangeDate = {item.exchangedate}
                         />
+                    </Fragment>
                     ))
                 }
-            </ul>
+            </div>
 
             <Pagination>
                 <Pagination.Prev onClick = {previousPageHandler} />

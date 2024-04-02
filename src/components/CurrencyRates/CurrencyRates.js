@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import CurrencyRate from './CurrencyRate'
-import Paginator from '../Paginator'
+import CurrencyRatesPaginator from './CurrencyRatesPaginator'
 import '../../sass/_styles.scss'
 
 const CurrencyRates = (props) => {
@@ -10,7 +9,7 @@ const CurrencyRates = (props) => {
 
     return (
         <div>
-            <Paginator items = {props.rates} />
+            <CurrencyRatesPaginator items = {props.rates} />
         </div>
     )
 }
