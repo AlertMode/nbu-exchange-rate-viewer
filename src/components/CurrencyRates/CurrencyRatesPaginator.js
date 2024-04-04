@@ -1,28 +1,35 @@
 import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
+import FormSelect from 'react-bootstrap/FormSelect'
 import Pagination from 'react-bootstrap/Pagination'
 import CurrencyRate from './CurrencyRate'
 import '../../sass/_styles.scss'
 
 const Paginator = (props) => {
     
-    const itemsPerPage = 10
+    const [currentPage, setCurrentPage] = useState(1)
+    const [itemsPerPage, setItemsPerPage] = useState(10)
 
     const totalPages = Math.ceil(props.items.length / itemsPerPage)
-
     const maxPagesToDisplay = 10
     const maxPagesInBar = 7
     const triggerPage = 6
-
-    const [currentPage, setCurrentPage] = useState(1)
-
     const indexOfTheLastItem = currentPage * itemsPerPage
     const indexOfTheFirstItem = indexOfTheLastItem - itemsPerPage
-
     const currentItems = props.items.slice(indexOfTheFirstItem, indexOfTheLastItem)
     
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber)
+    }
+    
+    const itemsPerPageHandler = (event) => {
+        const totalPagesRecount = Math.ceil(props.items.length / event.target.value)
+
+        if (currentPage > totalPagesRecount) {
+            setCurrentPage(totalPages - totalPagesRecount + 1)
+        }
+
+        setItemsPerPage(event.target.value)
     }
 
     const previousPageHandler = () => {
@@ -44,7 +51,7 @@ const Paginator = (props) => {
 
     return (
         <div className="pagination-container">
-            <div className='currencies-list'>
+            <div className="currencies-list">
                 {
                     currentItems.map((item, index) => (
                     <Fragment key = {index}>
@@ -60,7 +67,7 @@ const Paginator = (props) => {
                 }
             </div>
 
-            <Pagination>
+            <Pagination className = "pagination-bar">
                 <Pagination.Prev onClick = {previousPageHandler} />
                 <Pagination.Item onClick={() => handlePageChange(1)} active = {1 === currentPage}>{1}</Pagination.Item>
                 {/* Renders the button moving currentPage pointer three pages backward */}
@@ -129,6 +136,16 @@ const Paginator = (props) => {
                 <Pagination.Item onClick={() => handlePageChange(totalPages)} active = {totalPages === currentPage}>{totalPages}</Pagination.Item>
                 <Pagination.Next onClick = {nextPageHandler} />
             </Pagination>
+
+            <div className = "pagination-selector">
+                <div className = "pagination-selector-text">Cards per page:</div>
+                <div>
+                    <FormSelect value = {itemsPerPage} onChange = {itemsPerPageHandler}>
+                        <option value = "5">5</option>
+                        <option value = "10">10</option>
+                    </FormSelect>
+                </div>
+            </div>
         </div>
     )
 }
