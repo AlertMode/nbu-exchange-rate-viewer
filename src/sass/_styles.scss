@@ -7,6 +7,13 @@ $primary_color__2: #3baea0;
 $primary_color__3: #118a7e;
 $primary_color__4: #1f6f78;
 
+$currency_rate_el__width: 25rem;
+$currency_rate_el__heigth: 8rem;
+
+html {
+    font-size: 14px;
+}
+
 .nav-bar-overlap-prevention {
     padding-top: 5rem;
 }
@@ -17,11 +24,27 @@ $primary_color__4: #1f6f78;
     align-items: center;
 }
 
+.pagination-bar {
+    padding: 0.5rem;
+    margin: 0 0 0.6rem 0;
+}
+
+.pagination-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem;
+}
+
+.pagination-selector-text {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 .currencies-list {
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
-
     list-style-type: none;
 }
 
@@ -31,7 +54,8 @@ $primary_color__4: #1f6f78;
     align-items: center;
     justify-content: space-around;
 
-    min-width: 25rem;
+    width: $currency_rate_el__width;
+    height: $currency_rate_el__heigth;
     background: $primary_color__1;
     border-radius: 0.5rem;
     padding: 0.5rem 0 0.5rem 0;
