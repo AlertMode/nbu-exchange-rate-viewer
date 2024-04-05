@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import NavigationBar from './components/NavigationBar'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { fetchDataFromJSON } from './components/modules/fetchDataFromJSON.js'
-// import { cloneArray } from './components/modules/cloneArray.js'
+import { RatesData } from './context.js/context.js'
 import Home from './pages/Home'
 import SearchRate from './pages/SearchRate'
 import CustomRate from './pages/CustomRate'
@@ -10,11 +10,11 @@ import NoPage from './pages/NoPage'
 import './sass/_styles.scss'
 
 const App = () => {
-  const [actualCurrenyRate, setActualCurrencyRate] = useState('')
+  const { setRates } = useContext(RatesData)
 
   useEffect( () => {
     fetchDataFromJSON('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json').then(data => {
-      setActualCurrencyRate(data)
+      setRates(data)
     })
   }, [])
 
@@ -22,15 +22,13 @@ const App = () => {
     <div>
       <NavigationBar />
       <div className = 'nav-bar-overlap-prevention'>
-      <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/home" element={<Home rates={actualCurrenyRate}/>} />
+          <Route path="/home" element={<Home />} />
           <Route path="/search-rate" element={<SearchRate />} />
           <Route path="/custom-rate" element={<CustomRate />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
-      </BrowserRouter>
       </div>
     </div>
   )

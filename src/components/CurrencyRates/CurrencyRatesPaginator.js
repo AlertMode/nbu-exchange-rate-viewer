@@ -1,29 +1,33 @@
-import React, { Fragment, useState } from 'react'
+import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import FormSelect from 'react-bootstrap/FormSelect'
 import Pagination from 'react-bootstrap/Pagination'
+import { RatesData } from '../../context.js/context'
 import CurrencyRate from './CurrencyRate'
 import '../../sass/_styles.scss'
 
-const Paginator = (props) => {
+const Paginator = () => {
     
+    const { rates } = useContext(RatesData)
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage, setItemsPerPage] = useState(10)
 
-    const totalPages = Math.ceil(props.items.length / itemsPerPage)
+    const currencyRateCardHeight = 9
+
+    const totalPages = Math.ceil(rates.length / itemsPerPage)
     const maxPagesToDisplay = 10
     const maxPagesInBar = 7
     const triggerPage = 6
     const indexOfTheLastItem = currentPage * itemsPerPage
     const indexOfTheFirstItem = indexOfTheLastItem - itemsPerPage
-    const currentItems = props.items.slice(indexOfTheFirstItem, indexOfTheLastItem)
+    const currentItems = rates.slice(indexOfTheFirstItem, indexOfTheLastItem)
     
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
     
     const itemsPerPageHandler = (event) => {
-        const totalPagesRecount = Math.ceil(props.items.length / event.target.value)
+        const totalPagesRecount = Math.ceil(rates.length / event.target.value)
 
         if (currentPage > totalPagesRecount) {
             setCurrentPage(totalPages - totalPagesRecount + 1)
@@ -51,7 +55,7 @@ const Paginator = (props) => {
 
     return (
         <div className="pagination-container">
-            <div className="currencies-list">
+            <div className="currencies-list " style = {{height: `${itemsPerPage * currencyRateCardHeight}rem`}}>
                 {
                     currentItems.map((item, index) => (
                     <Fragment key = {index}>

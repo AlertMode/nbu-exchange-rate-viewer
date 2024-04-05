@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CurrencyRates from '../components/CurrencyRates/CurrencyRates'
-const Home = (props) => {
+const Home = () => {
     return (
         <div>
-            <CurrencyRates rates = {props.rates} />
+            <CurrencyRates />
         </div>
     )
 }

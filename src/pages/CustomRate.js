@@ -1,9 +1,15 @@
-import React from 'react'
+import { React, useContext } from 'react'
+import { RatesData } from '../context.js/context'
+
 
 const CustomRate = () => {
+
+    const { rates } = useContext(RatesData)
+
     return (
         <div>
-            <h2>Change Exchange Rate</h2>
+            <h2>Changed Exchange Rates</h2>
+            {console.log(rates)}
         </div>
     )
 }
