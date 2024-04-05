@@ -1,15 +1,18 @@
-import React from 'react'
+import { useContext, React } from 'react'
 import PropTypes from 'prop-types'
+import { RatesData } from '../../context.js/context'
 import CurrencyRatesPaginator from './CurrencyRatesPaginator'
 import '../../sass/_styles.scss'
 
-const CurrencyRates = (props) => {
+const CurrencyRates = () => {
 
-    if (!props.rates || props.rates.length === 0) return <h2>No data fetched!</h2>
+    const { rates } = useContext(RatesData)
+
+    if (!rates || rates.length === 0) return <h2>No data fetched!</h2>
 
     return (
         <div>
-            <CurrencyRatesPaginator items = {props.rates} />
+            <CurrencyRatesPaginator />
         </div>
     )
 }
