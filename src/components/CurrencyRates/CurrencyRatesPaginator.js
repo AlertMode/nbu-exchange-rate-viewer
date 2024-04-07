@@ -1,8 +1,7 @@
 import React, { useContext, Fragment, useState } from 'react'
-import PropTypes from 'prop-types'
 import FormSelect from 'react-bootstrap/FormSelect'
 import Pagination from 'react-bootstrap/Pagination'
-import { RatesData } from '../../context.js/context'
+import { RatesData } from '../../context/Context.js'
 import CurrencyRate from './CurrencyRate'
 import '../../sass/_styles.scss'
 
@@ -152,10 +151,6 @@ const Paginator = () => {
             </div>
         </div>
     )
-}
-
-Paginator.propTypes = {
-    items: PropTypes.array
 }
 
 export default Paginator

@@ -7,7 +7,7 @@ export async function fetchDataFromJSON (url) {
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`)
 
         return await response.json()
-    } catch (err) {
-        console.error(`Could not get the data: ${err}`)
+    } catch (error) {
+        throw new Error(`Could not get the data: ${error.message}`)
     }
 }
