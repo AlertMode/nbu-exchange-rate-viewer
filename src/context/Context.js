@@ -1,10 +1,10 @@
-import { createContext, React, useState } from "react"
+import  React, { createContext, useState } from "react"
 import PropTypes from 'prop-types'
 
 export const RatesData = createContext(null)
 
 const Context = ({ children }) => {
-    const [rates, setRates] = useState()
+    const [rates, setRates] = useState(null)
 
     return (
         <RatesData.Provider value = {{ rates, setRates }}>

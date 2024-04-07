@@ -1,6 +1,5 @@
 import { useContext, React } from 'react'
-import PropTypes from 'prop-types'
-import { RatesData } from '../../context.js/context'
+import { RatesData } from '../../context/Context.js'
 import CurrencyRatesPaginator from './CurrencyRatesPaginator'
 import '../../sass/_styles.scss'
 
@@ -15,10 +14,6 @@ const CurrencyRates = () => {
             <CurrencyRatesPaginator />
         </div>
     )
-}
-
-CurrencyRates.propTypes = {
-    rates: PropTypes.any
 }
 
 export default CurrencyRates

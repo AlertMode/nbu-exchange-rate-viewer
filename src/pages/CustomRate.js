@@ -1,5 +1,5 @@
 import { React, useContext } from 'react'
-import { RatesData } from '../context.js/context'
+import { RatesData } from '../context/Context.js'
 
 
 const CustomRate = () => {
