@@ -1,10 +1,9 @@
-import { React, useContext } from 'react'
-import { RatesData } from '../context/Context.js'
-
+import React from 'react'
+import { useStore } from '../store'
 
 const CustomRate = () => {
 
-    const { rates } = useContext(RatesData)
+    const { rates } = useStore()
 
     return (
         <div>

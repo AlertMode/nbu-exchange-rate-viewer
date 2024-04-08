@@ -1,13 +1,13 @@
-import React, { useContext, Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import FormSelect from 'react-bootstrap/FormSelect'
 import Pagination from 'react-bootstrap/Pagination'
-import { RatesData } from '../../context/Context.js'
+import { useStore } from '../../store'
 import CurrencyRate from './CurrencyRate'
 import '../../sass/_styles.scss'
 
 const Paginator = () => {
     
-    const { rates } = useContext(RatesData)
+    const { rates } = useStore()
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage, setItemsPerPage] = useState(10)
 
