@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import NavigationBar from './components/NavigationBar'
 import { Routes, Route } from 'react-router-dom'
-import { fetchDataFromJSON } from './components/modules/fetchDataFromJSON.js'
-import { RatesData } from './context/Context.js'
+import { fetchDataFromJSON } from './modules/fetchDataFromJSON'
+import { useStore } from './store'
 import Home from './pages/Home'
 import SearchRate from './pages/SearchRate'
 import CustomRate from './pages/CustomRate'
@@ -10,15 +10,14 @@ import NoPage from './pages/NoPage'
 import './sass/_styles.scss'
 
 const App = () => {
-  const { rates, setRates } = useContext(RatesData)
+
+  const { setRates} = useStore()
 
   useEffect( () => {
     fetchDataFromJSON('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
     .then(data => setRates(data))
     .catch(console.error)
   }, [])
-
-  console.log(rates)
 
   return (
     <div>
