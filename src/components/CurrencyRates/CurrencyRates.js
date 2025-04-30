@@ -4,17 +4,17 @@ import CurrencyRatesPaginator from './CurrencyRatesPaginator'
 import '../../sass/_styles.scss'
 
 const CurrencyRates = () => {
-    const { rates } = useStore()
+  const { rates } = useStore()
 
-    console.log(rates)
+  console.log(rates)
 
-    if (!rates || rates.length === 0) return <h2>No data fetched!</h2>
+  if (!rates || rates.length === 0) return <h2>No data fetched!</h2>
 
-    return (
-        <div>
-            <CurrencyRatesPaginator />
-        </div>
-    )
+  return (
+    <div>
+      <CurrencyRatesPaginator />
+    </div>
+  )
 }
 
 export default CurrencyRates
