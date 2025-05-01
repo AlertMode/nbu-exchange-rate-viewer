@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import FormSelect from 'react-bootstrap/FormSelect'
 import Pagination from 'react-bootstrap/Pagination'
+import CurrencyRateProps from '../../types/currency.types'
 import { useStore } from '../../store'
 import CurrencyRate from './CurrencyRate'
 import '../../sass/_styles.scss'
@@ -20,18 +21,19 @@ const Paginator = () => {
   const indexOfTheFirstItem = indexOfTheLastItem - itemsPerPage
   const currentItems = rates.slice(indexOfTheFirstItem, indexOfTheLastItem)
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber: number): void => {
     setCurrentPage(pageNumber)
   }
 
-  const itemsPerPageHandler = (event) => {
-    const totalPagesRecount = Math.ceil(rates.length / event.target.value)
+  const itemsPerPageHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const itemsPerPage = Number(event.target.value)
+    const totalPagesRecount = Math.ceil(rates.length / itemsPerPage)
 
     if (currentPage > totalPagesRecount) {
       setCurrentPage(totalPages - totalPagesRecount + 1)
     }
 
-    setItemsPerPage(event.target.value)
+    setItemsPerPage(itemsPerPage)
   }
 
   const previousPageHandler = () => {
@@ -57,14 +59,14 @@ const Paginator = () => {
         className="currencies-list "
         style={{ height: `${itemsPerPage * currencyRateCardHeight}rem` }}
       >
-        {currentItems.map((item, index) => (
+        {currentItems.map((item: CurrencyRateProps, index: number) => (
           <Fragment key={index}>
             <CurrencyRate
               r030={item.r030}
-              name={item.txt}
-              item={item.item}
+              txt={item.txt}
+              rate={item.rate}
               cc={item.cc}
-              exchangeDate={item.exchangedate}
+              exchangedate={item.exchangedate}
             />
           </Fragment>
         ))}
