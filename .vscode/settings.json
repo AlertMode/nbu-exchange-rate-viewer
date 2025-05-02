@@ -1,2 +1,16 @@
 {
-}
+    "eslint.execArgv": null,
+    "debug.javascript.defaultRuntimeExecutable": {
+      "pwa-node": "node"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnPaste": false,  
+    "prettier.useEditorConfig": false,
+    "prettier.useTabs": false,
+    "prettier.configPath": ".prettierrc.json",
+  }
+  

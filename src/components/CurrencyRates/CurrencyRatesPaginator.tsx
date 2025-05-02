@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import FormSelect from 'react-bootstrap/FormSelect'
 import Pagination from 'react-bootstrap/Pagination'
-import CurrencyRateProps from '../../types/currency.types'
-import { useStore } from '../../store'
-import CurrencyRate from './CurrencyRate'
 import '../../sass/_styles.scss'
+import { useStore } from '../../store'
+import { CurrencyRateProps } from '../../types/currency.types'
+import CurrencyRate from './CurrencyRate'
 
 const Paginator = () => {
   const { rates } = useStore()
@@ -55,10 +55,7 @@ const Paginator = () => {
 
   return (
     <div className="pagination-container">
-      <div
-        className="currencies-list "
-        style={{ height: `${itemsPerPage * currencyRateCardHeight}rem` }}
-      >
+      <div className="currencies-list " style={{ height: `${itemsPerPage * currencyRateCardHeight}rem` }}>
         {currentItems.map((item: CurrencyRateProps, index: number) => (
           <Fragment key={index}>
             <CurrencyRate
@@ -74,28 +71,19 @@ const Paginator = () => {
 
       <Pagination className="pagination-bar">
         <Pagination.Prev onClick={previousPageHandler} />
-        <Pagination.Item
-          onClick={() => handlePageChange(1)}
-          active={1 === currentPage}
-        >
+        <Pagination.Item onClick={() => handlePageChange(1)} active={1 === currentPage}>
           {1}
         </Pagination.Item>
         {/* Renders the button moving currentPage pointer three pages backward */}
         {totalPages > maxPagesToDisplay && currentPage >= triggerPage && (
           <Fragment>
-            <Pagination.Ellipsis
-              onClick={() => handlePageChange(currentPage - 3)}
-            />
+            <Pagination.Ellipsis onClick={() => handlePageChange(currentPage - 3)} />
           </Fragment>
         )}
         {/* Renders all array's content if its length is less than the value of maxPageInBar variable */}
         {totalPages <= maxPagesToDisplay &&
           pageNumbers.slice(1, totalPages - 1).map((number) => (
-            <Pagination.Item
-              key={number}
-              active={number === currentPage}
-              onClick={() => handlePageChange(number)}
-            >
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
               {number}
             </Pagination.Item>
           ))}
@@ -103,11 +91,7 @@ const Paginator = () => {
         {totalPages > maxPagesToDisplay &&
           currentPage < triggerPage &&
           pageNumbers.slice(1, maxPagesInBar).map((number) => (
-            <Pagination.Item
-              key={number}
-              active={number === currentPage}
-              onClick={() => handlePageChange(number)}
-            >
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
               {number}
             </Pagination.Item>
           ))}
@@ -116,41 +100,25 @@ const Paginator = () => {
           currentPage >= triggerPage &&
           currentPage <= totalPages + 1 - triggerPage &&
           pageNumbers.slice(currentPage - 3, currentPage + 2).map((number) => (
-            <Pagination.Item
-              key={number}
-              active={number === currentPage}
-              onClick={() => handlePageChange(number)}
-            >
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
               {number}
             </Pagination.Item>
           ))}
         {/* Renders the ending of an array until the value of triggerPage, counting from the very end */}
         {totalPages > maxPagesToDisplay &&
           currentPage > totalPages + 1 - triggerPage &&
-          pageNumbers
-            .slice(totalPages - maxPagesInBar, totalPages - 1)
-            .map((number) => (
-              <Pagination.Item
-                key={number}
-                active={number === currentPage}
-                onClick={() => handlePageChange(number)}
-              >
-                {number}
-              </Pagination.Item>
-            ))}
+          pageNumbers.slice(totalPages - maxPagesInBar, totalPages - 1).map((number) => (
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
+              {number}
+            </Pagination.Item>
+          ))}
         {/* Renders the button moving currentPage pointer three pages forward */}
-        {totalPages > maxPagesToDisplay &&
-          currentPage <= totalPages + 1 - triggerPage && (
-            <Fragment>
-              <Pagination.Ellipsis
-                onClick={() => handlePageChange(currentPage + 3)}
-              />
-            </Fragment>
-          )}
-        <Pagination.Item
-          onClick={() => handlePageChange(totalPages)}
-          active={totalPages === currentPage}
-        >
+        {totalPages > maxPagesToDisplay && currentPage <= totalPages + 1 - triggerPage && (
+          <Fragment>
+            <Pagination.Ellipsis onClick={() => handlePageChange(currentPage + 3)} />
+          </Fragment>
+        )}
+        <Pagination.Item onClick={() => handlePageChange(totalPages)} active={totalPages === currentPage}>
           {totalPages}
         </Pagination.Item>
         <Pagination.Next onClick={nextPageHandler} />
