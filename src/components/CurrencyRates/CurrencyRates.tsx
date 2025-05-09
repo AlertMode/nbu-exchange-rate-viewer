@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import axiosInterceptorGetRateByDate from '../../requests/axiosInterceptorGetRateByDate'
+import getRatesByDate from '../../requests/getRatesByDate'
 import '../../sass/_styles.scss'
 import { useStore } from '../../store'
 import CurrencyRatesPaginator from './CurrencyRatesPaginator'
@@ -8,12 +8,23 @@ const CurrencyRates = () => {
   const { rates, setRates } = useStore()
 
   useEffect(() => {
-    axiosInterceptorGetRateByDate()
-      .then((response) => {
-        setRates(response?.data || [])
-      })
-      .catch(console.error)
+    requestRates()
   }, [])
+
+  async function requestRates() {
+    try {
+      const response = await getRatesByDate()
+      console.log('response', response)
+      if (response && response?.data) {
+        setRates(response?.data)
+      } else {
+        setRates([])
+        throw new Error('No data fetched')
+      }
+    } catch (error: unknown) {
+      console.error(`ERROR >> requestRates: ${error}`)
+    }
+  }
 
   if (!rates || rates.length === 0) return <h2>No data fetched!</h2>
 
