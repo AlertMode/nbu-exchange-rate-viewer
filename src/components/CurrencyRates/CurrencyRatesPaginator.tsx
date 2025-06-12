@@ -6,14 +6,17 @@ import { useStore } from '../../store'
 import { CurrencyRateProps } from '../../types/currency.types'
 import CurrencyRate from './CurrencyRate'
 
-const Paginator = (): React.JSX.Element => {
-  const THE_FIRST_PAGE = 1
-  const FIVE_ITEMS_PER_PAGE = 5
-  const TEN_ITEMS_PER_PAGE = 10
-  const MAX_PAGES_TO_DISPLAY = 7
-  const MAX_PAGES_IN_BAR = 7
-  const TRIGGER_PAGE = 6
+const THE_FIRST_PAGE = 1
+const FIVE_ITEMS_PER_PAGE = 5
+const TEN_ITEMS_PER_PAGE = 10
+const MAX_PAGES_TO_DISPLAY = 7
+const MAX_PAGES_IN_BAR = 7
+const TRIGGER_PAGE = 6
 
+// TODO: Refactor this component to take properties from the parent component
+// In order to use any other data source, not only the store
+// and to use any other data type, not only CurrencyRateProps
+const Paginator = (): React.JSX.Element => {
   const { rates } = useStore()
   const [currentPage, setCurrentPage] = useState(THE_FIRST_PAGE)
   const [itemsPerPage, setItemsPerPage] = useState(TEN_ITEMS_PER_PAGE)
