@@ -46,7 +46,6 @@ const CurrencyRates = () => {
         getKey={(item) => item.cc}
         renderItem={(item: CurrencyRateProps, index) => (
           <CurrencyRate
-            key={index}
             r030={item.r030}
             txt={item.txt}
             rate={item.rate}
