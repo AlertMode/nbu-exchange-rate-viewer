@@ -1,25 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import NavigationBar from './components/NavigationBar'
-import { Routes, Route } from 'react-router-dom'
-import { fetchDataFromJSON } from './requests/fetchDataFromJSON'
-import { useStore } from './store'
-import Home from './pages/Home'
-import SearchRate from './pages/SearchRate'
 import CustomRate from './pages/CustomRate'
+import Home from './pages/Home'
 import NoPage from './pages/NoPage'
+import SearchRate from './pages/SearchRate'
 import './sass/_styles.scss'
 
 const App = () => {
-  const { setRates } = useStore()
-
-  useEffect(() => {
-    fetchDataFromJSON(
-      'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
-    ).then((response) => response.json())
-      .then((data) => setRates(data))
-      .catch(console.error)
-  }, [])
-
   return (
     <div>
       <NavigationBar />

@@ -7,63 +7,65 @@ $primary_color__2: #3baea0;
 $primary_color__3: #118a7e;
 $primary_color__4: #1f6f78;
 
-$currency_rate_el__width: 25rem;
-$currency_rate_el__heigth: 8rem;
+$currency_rate_el__width_min: 15rem;
+$currency_rate_el__width_max: 25rem;
+$currency_rate_el__height: 10rem;
 
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .nav-bar-overlap-prevention {
-    padding-top: 5rem;
+  padding-top: 5rem;
 }
 
 .pagination-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pagination-bar {
-    padding: 0.5rem;
-    margin: 0 0 0.6rem 0;
+  padding: 0.5rem;
+  margin: 0.6rem 0 0.6rem 0;
 }
 
 .pagination-selector {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem;
 }
 
 .pagination-selector-text {
-    font-weight: 600;
-    text-transform: uppercase;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .currencies-list {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  list-style-type: none;
 }
 
 .currency-rate {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 
-    width: $currency_rate_el__width;
-    height: $currency_rate_el__heigth;
-    background: $primary_color__1;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0 0.5rem 0;
-    margin: 0.5rem;
+  width: $currency_rate_el__width_max;
+  height: $currency_rate_el__height;
+  background: $primary_color__1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem;
 }
 
 .currency-rate__name {
-    font-family: $sora-sans;
-    font-weight: 800;
-    text-align: center;
+  font-family: $sora-sans;
+  font-weight: 800;
+  text-align: center;
 }
