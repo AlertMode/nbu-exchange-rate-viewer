@@ -44,7 +44,7 @@ const CurrencyRates = () => {
       <Paginator
         items={rates}
         getKey={(item) => item.cc}
-        renderItem={(item: CurrencyRateProps, index) => (
+        renderItem={(item: CurrencyRateProps) => (
           <CurrencyRate
             r030={item.r030}
             txt={item.txt}
